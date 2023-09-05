@@ -1,7 +1,8 @@
 console.log("Welcome to rock paper scissors!");
 
-function getComputerChoice() {
-    let choices = ["Rock", "Paper", "Scissors"];
+const CHOICES = ["rock", "paper", "scissors"];
 
-    return choices[Math.floor(Math.random() * 3)];
+function getComputerChoice() {
+
+    return CHOICES[Math.floor(Math.random() * 3)];
 }
