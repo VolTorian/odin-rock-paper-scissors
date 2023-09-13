@@ -10,38 +10,47 @@ function playRound(e) {
     let playerChoice = e.target.id;
     let computerChoice = getComputerChoice();
     //
+    const roundResult = document.querySelector(".round-result");
     
-    console.log("You chose " + playerChoice + " against " + computerChoice + ".")
+    console.log(`You chose ${playerChoice} against ${computerChoice}`)
+    roundResult.textContent = `You chose ${playerChoice} against ${computerChoice}.`;
 
     if (playerChoice === computerChoice) {
+        roundResult.textContent += " You tied the round.";
         return "Tie";
     }
     else {
         if (playerChoice === "rock") {
             if (computerChoice === "paper") {
+                roundResult.textContent += " You lost the round.";
                 return "ComputerWin";
             }
             
             if (computerChoice === "scissors") {
+                roundResult.textContent += " You won the round.";
                 return "PlayerWin";
             }
             
         }
         else if (playerChoice === "paper") {
             if (computerChoice === "scissors") {
+                roundResult.textContent += " You lost the round.";
                 return "ComputerWin";
             }
 
             if (computerChoice === "rock") {
+                roundResult.textContent += " You won the round.";
                 return "PlayerWin";
             }
         }
         else if (playerChoice === "scissors") {
             if (computerChoice === "rock") {
+                roundResult.textContent += " You lost the round.";
                 return "ComputerWin";
             }
 
             if (computerChoice === "paper") {
+                roundResult.textContent += " You won the round.";
                 return "PlayerWin";
             }
         }
