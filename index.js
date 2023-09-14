@@ -11,6 +11,7 @@ let round = 1;
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => button.addEventListener("click", playRound));
 
+console.log(`Best of 5: round ${round}`);
 
 function getComputerChoice() {
     return CHOICES[Math.floor(Math.random() * 3)];
@@ -20,12 +21,12 @@ function playRound(e) {
     let playerChoice = e.target.id;
     let computerChoice = getComputerChoice();
     const roundResult = document.querySelector(".round-result");
-    
-    console.log(`You chose ${playerChoice} against ${computerChoice}.`)
+
+    console.log(`You chose ${playerChoice} against ${computerChoice}.`);
     roundResult.textContent = `You chose ${playerChoice} against ${computerChoice}.`;
 
     if (playerChoice === computerChoice) {
-        roundResult.textContent += " You tied the round. Redo it.";;
+        roundResult.textContent += " You tied the round. Redo it.";
     }
     else {
         if (playerChoice === "rock") {
@@ -62,19 +63,24 @@ function playRound(e) {
                 playerPoints++;
             }
         }
-        round++;
-        console.log(playerPoints);
-        console.log(computerPoints);
+        console.log(`Player: ${playerPoints}`);
+        console.log(`Computer: ${computerPoints}`);
         playerPointsDisplay.textContent = `Player: ${playerPoints}`;
         computerPointsDisplay.textContent = `Computer: ${computerPoints}`;
-    }
-    if (round > 5) {
-        gameEnd();
+
+        if (Math.max(playerPoints, computerPoints) == 3) { //best of, not first to 5 (first to 3)
+            gameEnd();
+        } else{
+            round++;
+            console.log(`Best of 5: round ${round}`);
+            roundDisplay.textContent = `Best of 5: round ${round}`;
+        }
     }
 }
 
 function gameEnd() {
     console.log("Game finished");
+    const gameResult = document.createElement("div");
     if (playerPoints > computerPoints) {
         console.log("Player wins");
     }
@@ -84,6 +90,8 @@ function gameEnd() {
     else {
         console.log("O.o wat there should not be a tie in a best of 5");
     }
+    buttons.forEach((button) => button.disabled = true);
+
 }
 
 function playerSelect(e) {
@@ -95,22 +103,22 @@ function playerSelect(e) {
 
 }
 
-function game() {
+// function game() {
 
     
-    for (let i = 0; i < 1; i++) {
-        console.log("Round " + (i + 1));
-    }
+//     for (let i = 0; i < 1; i++) {
+//         console.log("Round " + (i + 1));
+//     }
 
-    if (playerPoints === computerPoints) {
-        console.log("You tied the game!")
-    }
-    else if (playerPoints > computerPoints) {
-        console.log("You won the game!");
-    }
-    else if (playerPoints < computerPoints) {
-        console.log("You lost the game!");
-    }
-}
+//     if (playerPoints === computerPoints) {
+//         console.log("You tied the game!")
+//     }
+//     else if (playerPoints > computerPoints) {
+//         console.log("You won the game!");
+//     }
+//     else if (playerPoints < computerPoints) {
+//         console.log("You lost the game!");
+//     }
+// }
 
-game();
+// game();
