@@ -97,32 +97,3 @@ function gameEnd() {
     scoreboard.appendChild(gameResult);
     
 }
-
-function playerSelect(e) {
-    console.log(e.target);
-    if (e.target.id == "rock") {
-        console.log("rock!!");
-    }
-    return e.target.id;
-
-}
-
-// function game() {
-
-    
-//     for (let i = 0; i < 1; i++) {
-//         console.log("Round " + (i + 1));
-//     }
-
-//     if (playerPoints === computerPoints) {
-//         console.log("You tied the game!")
-//     }
-//     else if (playerPoints > computerPoints) {
-//         console.log("You won the game!");
-//     }
-//     else if (playerPoints < computerPoints) {
-//         console.log("You lost the game!");
-//     }
-// }
-
-// game();
