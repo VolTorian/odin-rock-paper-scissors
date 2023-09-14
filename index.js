@@ -83,15 +83,19 @@ function gameEnd() {
     const gameResult = document.createElement("div");
     if (playerPoints > computerPoints) {
         console.log("Player wins");
+        gameResult.textContent = "You win";
     }
     else if (computerPoints > playerPoints) {
         console.log("Computer wins");
+        gameResult.textContent = "You lose";
     }
     else {
         console.log("O.o wat there should not be a tie in a best of 5");
     }
     buttons.forEach((button) => button.disabled = true);
-
+    const scoreboard = document.querySelector(".scoreboard");
+    scoreboard.appendChild(gameResult);
+    
 }
 
 function playerSelect(e) {
